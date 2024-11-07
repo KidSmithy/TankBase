@@ -67,13 +67,13 @@
 
 // void initialize() {
 // 	pros::lcd::initialize();
-// 	lf.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-// 	lm.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-// 	lb.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+	// lf.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+	// lm.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+	// lb.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 
-// 	rf.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-// 	rm.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-// 	rb.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+	// rf.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+	// rm.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+	// rb.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 
 // 	intakeLower.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
 // 	intakeUpper.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
