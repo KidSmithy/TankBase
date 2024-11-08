@@ -51,7 +51,12 @@
 
 #define FRONT_ROLLER_SENSOR_PORT 'F'
 
+#define SLAM_DUNK_SENSOR_PORT 'G'
+
 #define ZERO_VECTOR INFINITY
+
+#define SLAM_DUNK_L 16
+#define SLAM_DUNK_R 18
 
 pros::Controller master(pros::E_CONTROLLER_MASTER);
 
@@ -79,7 +84,12 @@ pros::Imu imu(IMU_SENSOR_PORT);
 
 pros::ADIDigitalOut solenoid(SOLENOID_SENSOR_PORT);
 
+
 pros::ADIDigitalOut front_roller(FRONT_ROLLER_SENSOR_PORT);
+pros::ADIAnalogIn slam_dunk(SLAM_DUNK_SENSOR_PORT);
+
+pros::Motor slam_dunk_l(SLAM_DUNK_L, pros::E_MOTOR_GEAR_RED, true, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor slam_dunk_r(SLAM_DUNK_R, pros::E_MOTOR_GEAR_RED, false, pros::E_MOTOR_ENCODER_DEGREES);
 
 extern "C" int32_t vexGenericSerialReceive( uint32_t index, uint8_t *buffer, int32_t length );
 extern "C" void vexGenericSerialEnable(  uint32_t index, uint32_t nu );
@@ -97,9 +107,10 @@ const double TO_DEGREES = (180.0 / M_PI);
 const double TO_RADIANS = (M_PI / 180.0);
 const double WHEEL_BASE_RADIUS = 263.0/2.0; //in mm
 bool actuated = false;
+bool actuated_frontroller = false;
 double wheel_diameter = 69.85;  
 double PosConvert = M_PI * wheel_diameter / 360; 
-
+int slammingState = 0;
 //MogoLift
 const double mkP = 0.88;
 const double mkI = 0.0; 
@@ -128,3 +139,8 @@ double degrees_per_mm = 1.6857;
 
 double base_error = 4.0;
 double decelerationThreshold = 130;
+
+double slam_target = 0;
+double slam_Kp = 0.4;
+double slam_Kd = 0.1;
+double slam_Ki = 0.0;
